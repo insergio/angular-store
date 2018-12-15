@@ -1,0 +1,25 @@
+
+:host{
+    width: 100%;
+}
+
+.product-list{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    .product{
+        padding: 20px;
+        img{
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        p{
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+}
+
+.search-box{
+    padding: 10px;
+}

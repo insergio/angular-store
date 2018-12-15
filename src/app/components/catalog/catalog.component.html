@@ -1,3 +1,10 @@
-<p>
-  catalog works!
-</p>
+<div class="search-box">
+  <input id="typeahead-basic" type="text" class="form-control" />
+</div>
+
+<div class="product-list">
+  <div *ngFor="let product of [0,1,2,3,4,5,6,7,8,9,10]" class="product col-12 col-sm-6	col-md-4	col-lg-4	col-xl-4">
+    <img src="http://placehold.it/350x350" />
+    <p>Product name</p>
+  </div>
+</div>

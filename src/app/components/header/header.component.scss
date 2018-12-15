@@ -1,0 +1,24 @@
+@import "../../../variables.scss";
+@import url('https://fonts.googleapis.com/css?family=Yellowtail');
+
+.header{
+    .menu-button{
+        text-align: left;
+    }
+    .logo{
+        text-align: center;
+        font-family: 'Yellowtail', cursive;
+        font-size: 30px;
+        i{
+            padding-right: 0px;
+        }
+    }
+    .cart-button{
+        text-align: right;
+    }
+    i{
+        color: $main;
+        padding: 10px;
+        font-size: 30px;
+    }
+}
