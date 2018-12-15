@@ -1,0 +1,49 @@
+@import "../../../variables.scss";
+
+
+:host{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.cart{
+    margin-bottom: 40px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    .item{
+        &:not(:last-child){
+            border-bottom: 1px solid #eee;
+        }
+    
+        .name{
+            margin-bottom: 0px;
+            vertical-align: middle;
+            padding: 10px 0px 5px;
+        }
+        .control{
+            text-align: right;
+            .qty{
+                display: inline-block;
+                color: $main;
+                padding: 10px;
+            }
+            .count{
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.save-buttons{
+    button{
+        margin: 5px;
+    }
+}
+
+
+@include breakpoint(sm) {
+    .save-buttons{
+        text-align: center;
+    }
+}

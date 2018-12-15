@@ -1,0 +1,48 @@
+@import "../../../variables.scss";
+
+
+:host{
+    width: 100%;
+}
+
+.product-image{
+    text-align: right;
+    img{
+        border-radius: 10px;
+    }
+}
+
+.product-info{
+    h1{
+        font-size: 24px;
+    }
+
+    .amount{
+        input{
+            width: 50px;
+            display: inline-block;
+            margin-left: 10px;
+        }
+    }
+}
+
+
+@include breakpoint(sm) {
+    .product-image{
+        text-align: center;
+        margin: 20px auto 30px;
+    }
+
+    .product-info{
+        max-width: 350px;
+        margin: auto;
+        text-align: center;
+        .control{
+            margin: 40px auto 50px;
+
+            button{
+                width: 100%;
+            }
+        }
+    }
+}

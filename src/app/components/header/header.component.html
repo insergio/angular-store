@@ -1,12 +1,37 @@
 <div class="row header" style="margin: auto;">
   <div class="col-3 menu-button">
-    <i class="fa fa-bars"></i>
+    <i (click)="toggleSidenav()" class="fa fa-bars"></i>
   </div>
   <div class="col-6 logo">
     <p><i class="fab fa-angular"></i>Store</p>
-    
+
   </div>
   <div class="col-3 cart-button">
-    <i class="fa fa-shopping-cart"></i>
+    <i (click)="toggleCart()" class="fa fa-shopping-cart"></i>
+  </div>
+</div>
+
+
+<div [@sidenavAnimation]="sidenavIsOpen ? 'open' : 'closed'" class="sidenav">
+  <a (click)="toggleSidenav()" class="closebtn">&times;</a>
+  <a>CATEGORIA 1</a>
+  <a>CATEGORIA 1</a>
+  <a>CATEGORIA 1</a>
+
+</div>
+
+<div [@cartAnimation]="cartIsOpen ? 'open' : 'closed'" class="minicart">
+  <div class="item-list">
+    <div *ngFor="let product of [0,1,2,3,4,5,6,7,8,9,10]"  class="item row">
+      <div class="col-10">
+        <p>Nombre de producto</p>
+      </div>
+      <div class="col-2">
+        <p>x1</p>
+      </div>
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="btn btn-primary">Ver carro</button>
   </div>
 </div>
