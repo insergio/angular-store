@@ -17,7 +17,7 @@ import { PayComponent } from './components/pay/pay.component';
 import { HomeComponent } from './components/home/home.component';
 import { SortPipe } from './pipes/sort.pipe';
 import { SearchPipe } from './pipes/search.pipe';
-
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -31,7 +31,8 @@ import { SearchPipe } from './pipes/search.pipe';
     PayComponent,
     HomeComponent,
     SortPipe,
-    SearchPipe
+    SearchPipe,
+    FilterPipe
 
   ],
   imports: [

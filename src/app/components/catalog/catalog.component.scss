@@ -9,14 +9,35 @@ h1{
     text-align: center;
 }
 
-.sort-menu{
-    text-align: right;
-    .selected-sort{
-        color: $main;
+.options{
+    display: flex;
+    justify-content: space-between;
+    .sort-menu{
+        text-align: right;
+        .selected-sort{
+            color: $main;
+        }
+        i{
+            color: $main;
+            margin-left: 10px;
+        }
     }
-    i{
-        color: $main;
-        margin-left: 10px;
+    
+    .filter-menu{
+        .minmax{
+            .price-cont{
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+        .form-control{
+            width: 80px;
+            height: 30px;
+        }
+        
+        .check{
+            margin-left: 10px;
+        }
     }
 }
 
@@ -44,4 +65,20 @@ h1{
 
 .search-box{
     padding: 10px;
+}
+
+
+@include breakpoint(sm) {
+    .options{
+        display: flex;
+        flex-flow: wrap;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+        width: 100%;
+        align-content: center;
+        margin: auto;
+    }
+
+
 }
