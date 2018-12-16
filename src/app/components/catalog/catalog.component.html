@@ -1,13 +1,26 @@
-<div class="search-box">
-  <input id="typeahead-basic" type="text" class="form-control" />
-</div>
+<div *ngIf="!error">
+  <div *ngIf="currentCategory" class="search-box">
+    <input *ngIf="!currentCategory.sublevels" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="searchText" placeholder="Busca un producto" />
+  </div>
 
-<h1 *ngIf="currentCategory">{{currentCategory.name}}</h1>
+  <h1 *ngIf="currentCategory">{{currentCategory.name}}</h1>
 
-<div class="product-list">
-  <div *ngFor="let product of products" class="product col-12 col-sm-6	col-md-4	col-lg-4	col-xl-4">
-    <a (click)="toCard(product.id)"><img src="http://placehold.it/350x350" /></a>
-    <a (click)="toCard(product.id)"><p>{{product.name}}</p></a>
-    <p class="price">{{product.price}}</p>
+  <div class="sort-menu">
+    <p>Ordenar por:</p>
+    <a [ngClass]="{'selected-sort': sort=='name'}" (click)="sortBy('name')">Nombre</a> | <a [ngClass]="{'selected-sort': sort=='price'}"
+      (click)="sortBy('price')">Precio</a> | <a [ngClass]="{'selected-sort': sort=='available'}" (click)="sortBy('available')">Disponibilidad</a>
+    <a *ngIf="sort" (click)="toggleOrder()"><i class="fas fa-long-arrow-alt-up" *ngIf="!ascdesc"></i><i class="fas fa-long-arrow-alt-down" *ngIf="ascdesc"></i> </a>
+  </div>
+
+  <div class="product-list">
+    <div *ngFor="let product of products | search : searchText | sort: sort:ascdesc " class="product col-12 col-sm-6	col-md-4	col-lg-4	col-xl-4">
+      <a (click)="toCard(product.id)"><img src="http://placehold.it/350x350" /></a>
+      <a (click)="toCard(product.id)">
+        <p>{{product.name}}</p>
+      </a>
+      <p class="price">{{product.price}}</p>
+    </div>
   </div>
 </div>
+
+<h1 *ngIf="error">Categoría no encontrada</h1>

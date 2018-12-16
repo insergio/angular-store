@@ -15,6 +15,9 @@ import { TreeComponent } from './components/tree/tree.component';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import { PayComponent } from './components/pay/pay.component';
 import { HomeComponent } from './components/home/home.component';
+import { SortPipe } from './pipes/sort.pipe';
+import { SearchPipe } from './pipes/search.pipe';
+
 
 
 @NgModule({
@@ -27,6 +30,9 @@ import { HomeComponent } from './components/home/home.component';
     TreeComponent,
     PayComponent,
     HomeComponent,
+    SortPipe,
+    SearchPipe
+
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
