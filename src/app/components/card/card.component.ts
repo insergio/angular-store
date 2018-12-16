@@ -54,7 +54,7 @@ export class CardComponent implements OnInit {
 
   addToCart(form){
     if(form.valid){
-      var newProduct = {...this.currentProduct, ...form.value}
+      var newProduct = {...this.currentProduct, amount: parseInt(form.value.amount)}
       this.cartService.addProduct(newProduct)
     }
 

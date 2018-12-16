@@ -1,0 +1,24 @@
+<div *ngIf="!payment" class="cart container">
+  <div *ngFor="let product of products" class="item row">
+    <div class="col-7 col-md-10">
+
+      <p class="name">
+        {{product.name}}
+      </p>
+
+    </div>
+    <div class="col-5 col-md-2 control">
+      <p class="count">{{product.amount}}</p>
+    </div>
+  </div>
+</div>
+
+<h1 *ngIf="!products[0] && !payment">No hay productos por pagar</h1>
+
+<h1 *ngIf="payment">¡Pago Exitoso!</h1>
+
+<div class="save-buttons">
+  <button *ngIf="products[0] && !payment" (click)="pay()" type="submit" class="btn btn-primary">Pagar</button>
+  <button routerLink="/" *ngIf="payment" type="submit" class="btn btn-secondary">Volver</button>
+
+</div>

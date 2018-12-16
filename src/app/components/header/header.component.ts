@@ -27,9 +27,11 @@ import { CartService } from '../../services/cart.service';
     trigger('cartAnimation', [
       state('open', style({
           opacity: 1,
+          display: 'block'
       })),
       state('closed', style({
           opacity: 0,
+          display: 'none'
       })),
       transition('open => closed', [
         animate('0.1s')

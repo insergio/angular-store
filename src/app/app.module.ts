@@ -13,6 +13,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { TreeComponent } from './components/tree/tree.component';
 
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import { PayComponent } from './components/pay/pay.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
     CardComponent,
     CartComponent,
     TreeComponent,
+    PayComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
