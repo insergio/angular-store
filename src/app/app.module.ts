@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { APP_ROUTING } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
@@ -29,6 +30,8 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
     BrowserAnimationsModule,
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,18 +1,19 @@
 <div class="cart container">
-  <div *ngFor="let product of [0,1,2,3,4,5,6,7,8,9,10]" class="item row">
+  <div *ngFor="let product of products" class="item row">
     <div class="col-7 col-md-10">
       
         <p class="name">
-          Nombre del producto
+          {{product.name}}
         </p>
       
     </div>
     <div class="col-5 col-md-2 control">
       <i class="fas fa-minus qty minus"></i>
-      <div class="count">0</div>
+      <div class="count">{{product.amount}}</div>
       <i class="fas fa-plus qty plus"></i>
     </div>
   </div>
+  <h1 class="empty" *ngIf="!products[0]">El carro está vacío</h1>
 </div>
 
 <div class="save-buttons">

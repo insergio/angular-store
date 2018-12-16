@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger,state,style,transition,animate,keyframes } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import {LocalStorageService} from 'ngx-webstorage';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -45,12 +46,19 @@ export class HeaderComponent implements OnInit {
   cartIsOpen = false;
   categories
   parents=""
+  products=[]
 
-  constructor(public http: HttpClient, private storage:LocalStorageService) { }
+  constructor(public http: HttpClient, private storage:LocalStorageService, private cartService: CartService) { }
 
   ngOnInit() {
     this.retrieveCategories()
     this.retrieveProducts()
+    this.cartService.getProducts().subscribe(data => {
+      //do what ever needs doing when data changes
+      console.log("change")
+      console.log(data)
+      this.products=data
+    })
   }
 
   toggleSidenav() {
@@ -87,6 +95,10 @@ export class HeaderComponent implements OnInit {
        }); 
     }
 
+  }
+
+  onNotify(){
+    this.toggleSidenav()
   }
 
   

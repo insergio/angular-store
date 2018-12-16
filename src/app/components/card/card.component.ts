@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {LocalStorageService} from 'ngx-webstorage';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
 
 
 @Component({
@@ -12,15 +14,29 @@ export class CardComponent implements OnInit {
 
   currentProduct=null;
   loading=true;
+  public frm: FormGroup;
 
-  constructor(private router:Router,  aroute: ActivatedRoute, private storage:LocalStorageService) { 
+  constructor(
+    private router:Router,  
+    aroute: ActivatedRoute, 
+    private storage:LocalStorageService, 
+    private cartService: CartService
+    ) { 
     aroute.params.subscribe(params => {
-      this.getProduct(params.id)
-      
-   });
+      this.getProduct(params.id)    
+    });
+
+    this.frm = new FormGroup({
+      'amount': new FormControl('1', [Validators.required])
+    });
   }
 
   ngOnInit() {
+    this.cartService.getProducts().subscribe(data => {
+      //do what ever needs doing when data changes
+      console.log("change")
+      console.log(data)
+    })
   }
 
   getProduct(id){
@@ -33,7 +49,15 @@ export class CardComponent implements OnInit {
         }
         
       }
-      this.loading=false;
+    this.loading=false;
+  }
+
+  addToCart(form){
+    if(form.valid){
+      var newProduct = {...this.currentProduct, ...form.value}
+      this.cartService.addProduct(newProduct)
+    }
+
   }
 
 }

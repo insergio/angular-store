@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -9,6 +9,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class TreeComponent implements OnInit {
   @Input() categories:any;
   @Input() parents: string;
+  @Output() notify: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private router:Router) { 
     //this.parents.push(this.category.id)
@@ -21,7 +22,12 @@ export class TreeComponent implements OnInit {
    
   }
 
+  onNotify(event){
+    this.notify.emit(event)
+  }
+
   toCategory(id){
+    this.notify.emit()
     this.router.navigate(['/catalog/'+this.parents+"/"+id])
   }
 

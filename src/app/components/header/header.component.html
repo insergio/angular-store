@@ -14,21 +14,22 @@
 
 <div [@sidenavAnimation]="sidenavIsOpen ? 'open' : 'closed'" class="sidenav">
   <a (click)="toggleSidenav()" class="closebtn">&times;</a>
-  <app-tree [categories]="categories" [parents]="parents" ></app-tree>
+  <app-tree [categories]="categories" [parents]="parents" (notify)='onNotify()' ></app-tree>
 </div>
 
 <div [@cartAnimation]="cartIsOpen ? 'open' : 'closed'" class="minicart">
   <div class="item-list">
-    <div *ngFor="let product of [0,1,2,3,4,5,6,7,8,9,10]"  class="item row">
+    <div *ngFor="let product of products"  class="item row">
       <div class="col-10">
-        <p>Nombre de producto</p>
+        <p>{{product.name}}</p>
       </div>
       <div class="col-2">
-        <p>x1</p>
+        <p>x{{product.amount}}</p>
       </div>
     </div>
+    <p class="empty" *ngIf="!products[0]">El carro está vacío</p>
   </div>
   <div class="button-container">
-    <button class="btn btn-primary">Ver carro</button>
+    <button class="btn btn-primary" (click)="toggleCart()" routerLink="/cart" >Ver carro</button>
   </div>
 </div>

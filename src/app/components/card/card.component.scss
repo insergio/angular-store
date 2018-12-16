@@ -24,6 +24,10 @@
             margin-left: 10px;
         }
     }
+    button.disabled{
+        background-color: $highlight;
+        border-color: $highlight;
+    }
 }
 
 
