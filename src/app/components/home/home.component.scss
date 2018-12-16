@@ -1,0 +1,13 @@
+@import "../../../variables.scss";
+
+.home h1{
+    color: $main;
+}
+
+@include breakpoint(sm) {
+    .home{
+        padding: 10px;
+        text-align: center;
+    }
+
+}

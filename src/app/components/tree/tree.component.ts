@@ -11,15 +11,9 @@ export class TreeComponent implements OnInit {
   @Input() parents: string;
   @Output() notify: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private router:Router) { 
-    //this.parents.push(this.category.id)
+  constructor(private router:Router) {}
 
-  }
-
-  ngOnInit() {
-   
-
-   
+  ngOnInit() { 
   }
 
   onNotify(event){
@@ -29,10 +23,6 @@ export class TreeComponent implements OnInit {
   toCategory(id){
     this.notify.emit()
     this.router.navigate(['/catalog/'+this.parents+"/"+id])
-  }
-
-  setParent(category){
-    
   }
 
 }

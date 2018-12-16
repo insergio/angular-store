@@ -11,10 +11,13 @@
           <div class="form-group amount">
             <label for="inputAmount" class="control-label">Cantidad: </label>
             <input id="inputAmount" type="number" class="form-control" formControlName="amount" />
-          </div> 
+          </div>
+          <p *ngIf="currentProduct.available">{{currentProduct.quantity}} disponibles</p> 
+          <p *ngIf="!currentProduct.available">{{currentProduct.quantity}} en stock</p> 
+
           <div class="form-group">
             <div>
-              <button *ngIf="currentProduct.available" type="submit" class="btn btn-primary">Agregar a Carrito</button>
+              <button *ngIf="currentProduct.available" [disabled]="!frm.valid" type="submit" class="btn btn-primary">Agregar a Carrito</button>
               <button disabled *ngIf="!currentProduct.available" type="submit" class="btn btn-primary disabled">Producto no disponible</button>
             </div>
           </div>

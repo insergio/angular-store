@@ -59,6 +59,12 @@ h1{
                 color: $main;
                 margin: 0px;
             }
+            &.available{
+                color: $main;
+            }
+            &.unavailable{
+                color: $highlight;
+            }
         }
     }
 }

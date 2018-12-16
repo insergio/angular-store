@@ -9,11 +9,11 @@
     <div class="filter-menu">
       <div class="minmax">
         <div class="form-group">
-          <div class="price-cont" >
+          <div class="price-cont">
             <label>Precio min.</label>
             <input class="form-control" type="number" [(ngModel)]="minprice">
           </div>
-          <div class="price-cont" >
+          <div class="price-cont">
             <label>Precio max.</label>
             <input class="form-control" type="number" [(ngModel)]="maxprice">
           </div>
@@ -21,7 +21,7 @@
       </div>
       <div class="form-group">
         <label>Disponible</label>
-        <input type="checkbox" class="check" [(ngModel)]="avilableFilter">
+        <input type="checkbox" class="check" [(ngModel)]="availableFilter">
       </div>
       <div class="form-group">
         <label>Stock Minimo</label>
@@ -32,18 +32,24 @@
       <p>Ordenar por:</p>
       <a [ngClass]="{'selected-sort': sort=='name'}" (click)="sortBy('name')">Nombre</a> | <a [ngClass]="{'selected-sort': sort=='price'}"
         (click)="sortBy('price')">Precio</a> | <a [ngClass]="{'selected-sort': sort=='available'}" (click)="sortBy('available')">Disponibilidad</a>
-      <a *ngIf="sort" (click)="toggleOrder()"><i class="fas fa-long-arrow-alt-up" *ngIf="!ascdesc"></i><i class="fas fa-long-arrow-alt-down" *ngIf="ascdesc"></i> </a>
+      | <a [ngClass]="{'selected-sort': sort=='quantity'}" (click)="sortBy('quantity')">Cantidad</a>
+      <a *ngIf="sort" (click)="toggleOrder()"><i class="fas fa-long-arrow-alt-up" *ngIf="!ascdesc"></i><i class="fas fa-long-arrow-alt-down"
+          *ngIf="ascdesc"></i> </a>
     </div>
   </div>
 
 
   <div class="product-list">
-    <div *ngFor="let product of products | search : searchText | filter: minprice : maxprice : avilableFilter : stockFilter | sort: sort:ascdesc " class="product col-12 col-sm-6	col-md-4	col-lg-4	col-xl-4">
+    <div *ngFor="let product of products | search : searchText | filter: minprice : maxprice : availableFilter : stockFilter | sort: sort:ascdesc "
+      class="product col-12 col-sm-6	col-md-4	col-lg-4	col-xl-4">
       <a (click)="toCard(product.id)"><img src="http://placehold.it/350x350" /></a>
       <a (click)="toCard(product.id)">
         <p>{{product.name}}</p>
       </a>
       <p class="price">{{product.price}}</p>
+      <p *ngIf="product.available"class="available">{{product.quantity}} disponibles</p>
+      <p *ngIf="!product.available"class="unavailable">No disponible</p>
+
     </div>
   </div>
 </div>

@@ -27,7 +27,7 @@ export class CardComponent implements OnInit {
     });
 
     this.frm = new FormGroup({
-      'amount': new FormControl('1', [Validators.required])
+      'amount': new FormControl('1', [Validators.required, Validators.min(1), Validators.max(this.currentProduct.quantity)])
     });
   }
 

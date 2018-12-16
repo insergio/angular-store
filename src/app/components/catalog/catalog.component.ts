@@ -9,11 +9,15 @@ import {LocalStorageService} from 'ngx-webstorage';
 })
 export class CatalogComponent implements OnInit {
   error=false;
-  render;
   currentCategory;
   products=[];
   sort="";
   ascdesc=false;
+
+  minprice
+  maxprice
+  availableFilter
+  stockFilter
 
   constructor(private router:Router, aroute: ActivatedRoute, private storage:LocalStorageService) { 
     aroute.url.subscribe((data) => {
@@ -49,7 +53,6 @@ export class CatalogComponent implements OnInit {
         }else{
           if(routes[0]){
             console.log("notfound")
-            this.render="NOTFOUND"
             this.error=true;
             return true;
           }else{
@@ -61,13 +64,13 @@ export class CatalogComponent implements OnInit {
       }
     }
     console.log("notfound")
-    this.render="NOTFOUND"
     this.error=true;
   }  
 
 
   getProducts(){
     this.products=[]
+    this.restartFilters()
     var prod=this.storage.retrieve('products')
     console.log(this.currentCategory.id)
     console.log(prod)
@@ -86,6 +89,15 @@ export class CatalogComponent implements OnInit {
   sortBy(param){
     this.sort=param;
     console.log(this.sort)
+  }
+
+  restartFilters(){
+    this.minprice=""
+    this.maxprice=""
+    this.availableFilter=false
+    this.stockFilter=""
+    this.ascdesc=false;
+    this.sort=""
   }
   
   toggleOrder(){
