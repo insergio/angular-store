@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger,state,style,transition,animate,keyframes } from '@angular/animations';
+import { HttpClient } from '@angular/common/http';
+import {LocalStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-header',
@@ -41,10 +43,14 @@ export class HeaderComponent implements OnInit {
 
   sidenavIsOpen = false;
   cartIsOpen = false;
+  categories
+  parents=""
 
-  constructor() { }
+  constructor(public http: HttpClient, private storage:LocalStorageService) { }
 
   ngOnInit() {
+    this.retrieveCategories()
+    this.retrieveProducts()
   }
 
   toggleSidenav() {
@@ -54,5 +60,36 @@ export class HeaderComponent implements OnInit {
   toggleCart(){
     this.cartIsOpen = !this.cartIsOpen;
   }
+
+  retrieveProducts(){
+    var products=this.storage.retrieve('products')
+    if(products){
+      console.log("retrieved products")
+    }else{
+      this.http.get('assets/products.json').subscribe(data => {
+         let prod:any = data;
+         this.storage.store('products', prod.products);
+       }); 
+    }
+  }
+
+  retrieveCategories(){
+    var cattree=this.storage.retrieve('categories')
+    if(cattree){
+      this.categories=cattree;
+      console.log("retrieved")
+    }else{
+      this.http.get('assets/categories.json').subscribe(data => {
+         let cat:any = data;
+         this.categories = cat.categories;
+         this.storage.store('categories', this.categories);
+         console.log(this.categories)
+       }); 
+    }
+
+  }
+
+  
+
 
 }

@@ -14,10 +14,7 @@
 
 <div [@sidenavAnimation]="sidenavIsOpen ? 'open' : 'closed'" class="sidenav">
   <a (click)="toggleSidenav()" class="closebtn">&times;</a>
-  <a>CATEGORIA 1</a>
-  <a>CATEGORIA 1</a>
-  <a>CATEGORIA 1</a>
-
+  <app-tree [categories]="categories" [parents]="parents" ></app-tree>
 </div>
 
 <div [@cartAnimation]="cartIsOpen ? 'open' : 'closed'" class="minicart">

@@ -1,32 +1,31 @@
 
-<div class="row">
+<div class="row" *ngIf="currentProduct">
   <div class="col-12 col-md-6 product-image">
       <img src="http://placehold.it/350x350" />
   </div>
   <div class="col-12 col-md-6">
     <div class="product-info">
-      <h1 class="title">Nombre del producto</h1>
+      <h1 class="title">{{currentProduct.name}}</h1>
       <hr />
       <div class="control">
-          <form class="form-horizontal">
-            <div class="form-group amount">
-              <label for="inputAmount" class="control-label">Cantidad: </label>
-              <input id="inputAmount" type="text" class="form-control" />
-            </div> 
-            <div class="form-group">
-              <div>
-                <button type="submit" class="btn btn-primary">Agregar a Carrito</button>
-              </div>
+        <form class="form-horizontal">
+          <div class="form-group amount">
+            <label for="inputAmount" class="control-label">Cantidad: </label>
+            <input id="inputAmount" type="text" class="form-control" />
+          </div> 
+          <div class="form-group">
+            <div>
+              <button type="submit" class="btn btn-primary">Agregar a Carrito</button>
             </div>
-          </form>     
-    
-    
+          </div>
+        </form>    
       </div>
-
-
     </div>
-  
-  
   </div>
+</div>
+
+<div class="row" *ngIf="!currentProduct">
+
+  <h1>Producto no existe</h1>
 
 </div>

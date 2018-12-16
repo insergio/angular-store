@@ -1,0 +1,9 @@
+<div >
+  <ul *ngIf="categories">
+    <li *ngFor="let category of categories">
+      <a (click)="toCategory(category.id)">{{category.name}}</a>
+      <app-tree [categories]="category.sublevels" [parents]="parents+'/'+category.id"></app-tree>
+    </li>
+  </ul>
+  
+</div>

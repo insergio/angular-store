@@ -2,9 +2,12 @@
   <input id="typeahead-basic" type="text" class="form-control" />
 </div>
 
+<h1 *ngIf="currentCategory">{{currentCategory.name}}</h1>
+
 <div class="product-list">
-  <div *ngFor="let product of [0,1,2,3,4,5,6,7,8,9,10]" class="product col-12 col-sm-6	col-md-4	col-lg-4	col-xl-4">
-    <img src="http://placehold.it/350x350" />
-    <p>Product name</p>
+  <div *ngFor="let product of products" class="product col-12 col-sm-6	col-md-4	col-lg-4	col-xl-4">
+    <a (click)="toCard(product.id)"><img src="http://placehold.it/350x350" /></a>
+    <a (click)="toCard(product.id)"><p>{{product.name}}</p></a>
+    <p class="price">{{product.price}}</p>
   </div>
 </div>

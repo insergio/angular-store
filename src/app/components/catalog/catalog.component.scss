@@ -1,6 +1,12 @@
+@import "../../../variables.scss";
 
 :host{
     width: 100%;
+}
+
+h1{
+    color: $main;
+    text-align: center;
 }
 
 .product-list{
@@ -16,6 +22,11 @@
         p{
             text-align: center;
             margin-top: 10px;
+            margin-bottom: 0px;
+            &.price{
+                color: $main;
+                margin: 0px;
+            }
         }
     }
 }

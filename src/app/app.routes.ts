@@ -6,9 +6,15 @@ import { CartComponent } from './components/cart/cart.component';
 
 
 const APP_ROUTES:Routes = [
-    { path: '', component:  CatalogComponent },
-    { path: 'product', component:  CardComponent },
+    { path: 'catalog', component:  CatalogComponent },
+    { path: 'product/:id', component:  CardComponent },
     { path: 'cart', component:  CartComponent },
+
+    {path: 'catalog', children: [
+        {path: '**', component: CatalogComponent}
+    ]},
+
+    /* { path: '**', pathMatch:'full', redirectTo:'catalog'} */
 
 
 ];
