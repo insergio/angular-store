@@ -4,6 +4,12 @@
 .btn-primary{
     background-color: $main;
     border: 1px solid $main;
+    &:not(.disabled){
+        &:active, &:focus, &:hover{
+            background-color: $highlight !important;
+            border-color: $highlight !important;
+        }
+    }
 }
 
 a{
